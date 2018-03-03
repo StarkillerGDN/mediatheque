@@ -1,6 +1,6 @@
 package com.gdn.mediatheque.entities;
 
-public enum Genre {
+public enum Type {
 	//Valeurs possibles films
 	ACTION,
 	AVENTURE,

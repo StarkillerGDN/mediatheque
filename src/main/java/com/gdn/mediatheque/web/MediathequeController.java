@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gdn.mediatheque.entities.Acteur;
-import com.gdn.mediatheque.entities.Artiste;
+import com.gdn.mediatheque.entities.Actor;
+import com.gdn.mediatheque.entities.Artist;
 import com.gdn.mediatheque.entities.Film;
-import com.gdn.mediatheque.entities.Genre;
-import com.gdn.mediatheque.entities.Musique;
-import com.gdn.mediatheque.entities.Oeuvre;
-import com.gdn.mediatheque.entities.Realisateur;
+import com.gdn.mediatheque.entities.Type;
+import com.gdn.mediatheque.entities.Music;
+import com.gdn.mediatheque.entities.Artwork;
+import com.gdn.mediatheque.entities.Director;
 import com.gdn.mediatheque.entities.Serie;
 import com.gdn.mediatheque.services.IMediathequeService;
 
@@ -34,9 +34,9 @@ public class MediathequeController {
 	private IMediathequeService iMediathequeService;
 	
 	/*************Routes oeuvres *************/
-	@RequestMapping(value="/oeuvres", method=RequestMethod.GET)
-	public List<Oeuvre> getOeuvres(){
-		return iMediathequeService.getOeuvres();
+	@RequestMapping(value="/artworks", method=RequestMethod.GET)
+	public List<Artwork> getArtworks(){
+		return iMediathequeService.getArtworks();
 	}
 	@RequestMapping(value="/films", method=RequestMethod.GET)
 	public List<Film> getFilms(){
@@ -47,61 +47,61 @@ public class MediathequeController {
 		return iMediathequeService.getSeries();
 	}
 	
-	@RequestMapping(value="/musiques", method=RequestMethod.GET)
-	public List<Musique> getMusiques(){
-		return iMediathequeService.getMusiques();
+	@RequestMapping(value="/musics", method=RequestMethod.GET)
+	public List<Music> getMusics(){
+		return iMediathequeService.getMusics();
 	}
 	
-	@RequestMapping(value="/oeuvres/{id}", method=RequestMethod.GET)
-	public Oeuvre getOeuvre(@PathVariable Long id) {
-		return iMediathequeService.getOeuvre(id);
+	@RequestMapping(value="/artworks/{id}", method=RequestMethod.GET)
+	public Artwork getArtwork(@PathVariable Long id) {
+		return iMediathequeService.getArtwork(id);
 	}
 	
 	/*************Routes Filtres oeuvres *************/
-	@RequestMapping(value="/films/byRealisateur/{nom}", method=RequestMethod.GET)
-	public List<Film> findFilmByRealisateur(@PathVariable String nom){
-		return iMediathequeService.findFilmByRealisateur(nom);
+	@RequestMapping(value="/films/byDirector/{name}", method=RequestMethod.GET)
+	public List<Film> findFilmByDirector(@PathVariable String name){
+		return iMediathequeService.findFilmByDirector(name);
 	}
 	
-	@RequestMapping(value="/series/byRealisateur/{nom}", method=RequestMethod.GET)
-	public List<Serie> findSerieByRealisateur(@PathVariable String nom){
-		return iMediathequeService.findSerieByRealisateur(nom);
+	@RequestMapping(value="/series/byDirector/{name}", method=RequestMethod.GET)
+	public List<Serie> findSerieByDirector(@PathVariable String name){
+		return iMediathequeService.findSerieByDirector(name);
 	}
 	
-	@RequestMapping(value="/films/byActeur/{nom}", method=RequestMethod.GET)
-	public List<Film> findFilmByActeur(@PathVariable String nom){
-		return iMediathequeService.findFilmByActeur(nom);
+	@RequestMapping(value="/films/byActor/{name}", method=RequestMethod.GET)
+	public List<Film> findFilmByActor(@PathVariable String name){
+		return iMediathequeService.findFilmByActor(name);
 	}
 	
-	@RequestMapping(value="/series/byActeur/{nom}", method=RequestMethod.GET)
-	public List<Serie> findSerieByActeur(@PathVariable String nom){
-		return iMediathequeService.findSerieByActeur(nom);
+	@RequestMapping(value="/series/byActor/{name}", method=RequestMethod.GET)
+	public List<Serie> findSerieByActor(@PathVariable String name){
+		return iMediathequeService.findSerieByActor(name);
 	}
 	
-	@RequestMapping(value="/musiques/byArtiste/{nom}", method=RequestMethod.GET)
-	public List<Musique> findMusiqueByArtiste(@PathVariable String nom){
-		return iMediathequeService.findMusiqueByArtiste(nom);
+	@RequestMapping(value="/musics/byArtist/{nom}", method=RequestMethod.GET)
+	public List<Music> findMusicByArtist(@PathVariable String name){
+		return iMediathequeService.findMusicByArtist(name);
 	}
 	
-	@RequestMapping(value="/oeuvres/byTitre/{titre}", method=RequestMethod.GET)
-	public List<Oeuvre> findByTitre(@PathVariable String titre){
-		return iMediathequeService.findByTitre(titre);
+	@RequestMapping(value="/artworks/byTitle/{title}", method=RequestMethod.GET)
+	public List<Artwork> findByTitle(@PathVariable String title){
+		return iMediathequeService.findByTitle(title);
 	}
 	
-	@RequestMapping(value="/films/byAnnee/{annee}", method=RequestMethod.GET)
-	public List<Film> findFilmByAnnee(@PathVariable int annee){
-		return iMediathequeService.findFilmByAnnee(annee);
+	@RequestMapping(value="/films/byYear/{year}", method=RequestMethod.GET)
+	public List<Film> findFilmByYear(@PathVariable int year){
+		return iMediathequeService.findFilmByYear(year);
 	}
 	
 	
-	@RequestMapping(value="/series/byAnnee/{annee}", method=RequestMethod.GET)
-	public List<Serie> findSerieByAnnee(@PathVariable int annee){
-		return iMediathequeService.findSerieByAnnee(annee);
+	@RequestMapping(value="/series/byYear/{year}", method=RequestMethod.GET)
+	public List<Serie> findSerieByYear(@PathVariable int year){
+		return iMediathequeService.findSerieByYear(year);
 	}
 	
-	@RequestMapping(value="/musiques/byAnnee/{annee}", method=RequestMethod.GET)
-	public List<Musique> findMusiqueByAnnee(@PathVariable int annee){
-		return iMediathequeService.findMusiqueByAnnee(annee);
+	@RequestMapping(value="/musics/byYear/{year}", method=RequestMethod.GET)
+	public List<Music> findMusicByYear(@PathVariable int year){
+		return iMediathequeService.findMusicByYear(year);
 	}
 	
 	/*@RequestMapping(value="/films/byGenre/{genre}", method=RequestMethod.GET)
@@ -121,36 +121,36 @@ public class MediathequeController {
 	}*/
 	
 	/*************Routes Realisateur*************/
-	@RequestMapping(value="/realisateurs", method=RequestMethod.GET)
-	public List<Realisateur>getRealisateurs(){
-		return iMediathequeService.getRealisateurs();
+	@RequestMapping(value="/directors", method=RequestMethod.GET)
+	public List<Director>getDirectors(){
+		return iMediathequeService.getDirectors();
 	}
 	
-	@RequestMapping(value="/realisateurs/{id}", method=RequestMethod.GET)
-	public Realisateur getRealisateurs(@PathVariable Long id){
-		return iMediathequeService.getRealisateur(id);
+	@RequestMapping(value="/directors/{id}", method=RequestMethod.GET)
+	public Director getDirector(@PathVariable Long id){
+		return iMediathequeService.getDirector(id);
 	}
 	
 	/*************Routes Acteur*************/
-	@RequestMapping(value="/acteurs", method=RequestMethod.GET)
-	public List<Acteur>getActeurs(){
-		return iMediathequeService.getActeurs();
+	@RequestMapping(value="/actors", method=RequestMethod.GET)
+	public List<Actor>getActors(){
+		return iMediathequeService.getActors();
 	}
 	
-	@RequestMapping(value="/acteurs/{id}", method=RequestMethod.GET)
-	public Acteur getActeur(@PathVariable Long id){
-		return iMediathequeService.getActeur(id);
+	@RequestMapping(value="/actors/{id}", method=RequestMethod.GET)
+	public Actor getActor(@PathVariable Long id){
+		return iMediathequeService.getActor(id);
 	}
 	
 	/*************Routes Artiste*************/
-	@RequestMapping(value="/artistes", method=RequestMethod.GET)
-	public List<Artiste>getArtistes(){
-		return iMediathequeService.getArtistes();
+	@RequestMapping(value="/atists", method=RequestMethod.GET)
+	public List<Artist>getArtists(){
+		return iMediathequeService.getArtists();
 	}
 	
-	@RequestMapping(value="/artistes/{id}", method=RequestMethod.GET)
-	public Artiste getArtiste(@PathVariable Long id){
-		return iMediathequeService.getArtiste(id);
+	@RequestMapping(value="/artists/{id}", method=RequestMethod.GET)
+	public Artist getArtist(@PathVariable Long id){
+		return iMediathequeService.getArtist(id);
 	}
 	
 }

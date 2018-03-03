@@ -24,9 +24,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  *
  */
 @Entity
-@DiscriminatorValue("MUSIQUE")
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Musique extends Oeuvre{
+@DiscriminatorValue("MUSIC")
+public class Music extends Artwork{
 	/**
 	 * 
 	 */
@@ -34,32 +33,31 @@ public class Musique extends Oeuvre{
 	//Attibuts
 	@ManyToMany
 	@JoinTable(
-			name="MUSIQUE_ARTISTES",
-			joinColumns=@JoinColumn(name="ID_MUSIQUE", referencedColumnName="ID"),
-			inverseJoinColumns=@JoinColumn(name="ID_ARTISTE", referencedColumnName="ID"))
-	//@JsonManagedReference
-	private List<Artiste> artistes;
+			name="MUSIC_ARTISTS",
+			joinColumns=@JoinColumn(name="ID_MUSIC", referencedColumnName="ID"),
+			inverseJoinColumns=@JoinColumn(name="ID_ARTIST", referencedColumnName="ID"))
+	private List<Artist> artists;
 	
 	
 	//Constructeur par défaut
-	public Musique() {
+	public Music() {
 		super();
 	}
 	
 	//Constructeur surchargé
-	public Musique(String titre, int annee, double duree, String description, String image, Genre genre,
-			 List<Artiste> artistes) {
-		super(titre, annee, duree, description, image, genre);
-		this.artistes = artistes;
+	public Music(String title, int year, double duration, String description, String image, Type type,
+			 List<Artist> artists) {
+		super(title, year, duration, description, image, type);
+		this.artists = artists;
 	}
 	
 	//Getter et setter
-	public List<Artiste> getArtiste() {
-		return artistes;
+	public List<Artist> getArtists() {
+		return artists;
 	}
 
-	public void setArtiste(List<Artiste> artiste) {
-		this.artistes = artiste;
+	public void setArtists(List<Artist> artists) {
+		this.artists = artists;
 	}
 	
 	

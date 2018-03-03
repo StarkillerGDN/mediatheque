@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  */
 @Entity
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Artiste implements Serializable{
+public class Artist implements Serializable{
 	/**
 	 * 
 	 */
@@ -30,23 +30,23 @@ public class Artiste implements Serializable{
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String nom;
-	private String prenom;
+	private String name;
+	private String firstname;
 	private String image;
-	@ManyToMany(mappedBy="artistes")
+	@ManyToMany(mappedBy="artists")
 	@JsonBackReference
-	private List<Musique>musiques;
+	private List<Music>musics;
 	
 	//Constructeur par défaut
-	public Artiste() {
+	public Artist() {
 	}
 	
 	//Constructeur surchargé
-	public Artiste(String nom, String prenom, List<Musique>musiques, String image) {
-		this.nom = nom;
-		this.prenom = prenom;
+	public Artist(String name, String firstname, List<Music>musics, String image) {
+		this.name = name;
+		this.firstname = firstname;
 		this.image = image;
-		this.musiques = musiques;
+		this.musics = musics;
 	}
 	
 	//Getter et setter
@@ -58,28 +58,28 @@ public class Artiste implements Serializable{
 		this.id = id;
 	}
 	
-	public String getNom() {
-		return nom;
+	public String getName() {
+		return name;
 	}
 	
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
-	public String getPrenom() {
-		return prenom;
+	public String getFirstname() {
+		return firstname;
 	}
 	
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public List<Musique> getMusiques() {
-		return musiques;
+	public List<Music> getMusics() {
+		return musics;
 	}
 
-	public void setMusiques(List<Musique> musiques) {
-		this.musiques = musiques;
+	public void setMusiques(List<Music> musics) {
+		this.musics = musics;
 	}
 
 	public String getImage() {

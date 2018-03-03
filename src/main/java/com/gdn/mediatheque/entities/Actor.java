@@ -20,8 +20,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  *
  */
 @Entity
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Acteur implements Serializable{
+public class Actor implements Serializable{
 	/**
 	 * 
 	 */
@@ -30,24 +29,24 @@ public class Acteur implements Serializable{
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String nom;
-	private String prenom;
+	private String name;
+	private String firstname;
 	private String image;
-	@ManyToMany(mappedBy="acteurs")
+	@ManyToMany(mappedBy="actors")
 	@JsonBackReference
 	private List<Film>films;
-	@ManyToMany(mappedBy="acteurs")
+	@ManyToMany(mappedBy="actors")
 	@JsonBackReference
 	private List<Serie>series;
 	
 	//Constructeur par défaut
-	public Acteur() {
+	public Actor() {
 	}
 	
 	//Constructeur surchargé
-	public Acteur(String nom, String prenom, List<Film>films, List<Serie>series, String image) {
-		this.nom = nom;
-		this.prenom = prenom;
+	public Actor(String name, String firstname, List<Film>films, List<Serie>series, String image) {
+		this.name = name;
+		this.firstname = firstname;
 		this.image = image;
 		this.films = films;
 		this.series = series;
@@ -62,20 +61,20 @@ public class Acteur implements Serializable{
 		this.id = id;
 	}
 	
-	public String getNom() {
-		return nom;
+	public String getName() {
+		return name;
 	}
 	
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setNom(String name) {
+		this.name = name;
 	}
 	
-	public String getPrenom() {
-		return prenom;
+	public String getFirstname() {
+		return firstname;
 	}
 	
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+	public void setPrenom(String firstname) {
+		this.firstname = firstname;
 	}
 
 	public List<Film> getFilms() {

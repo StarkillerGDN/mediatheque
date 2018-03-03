@@ -10,17 +10,17 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gdn.mediatheque.dao.ActeurRepository;
-import com.gdn.mediatheque.dao.ArtisteRepository;
-import com.gdn.mediatheque.dao.OeuvreRepository;
-import com.gdn.mediatheque.dao.RealisateurRepository;
-import com.gdn.mediatheque.entities.Acteur;
-import com.gdn.mediatheque.entities.Artiste;
+import com.gdn.mediatheque.dao.ActorRepository;
+import com.gdn.mediatheque.dao.ArtistRepository;
+import com.gdn.mediatheque.dao.ArtworkRepository;
+import com.gdn.mediatheque.dao.DirectorRepository;
+import com.gdn.mediatheque.entities.Actor;
+import com.gdn.mediatheque.entities.Artist;
 import com.gdn.mediatheque.entities.Film;
-import com.gdn.mediatheque.entities.Genre;
-import com.gdn.mediatheque.entities.Musique;
-import com.gdn.mediatheque.entities.Oeuvre;
-import com.gdn.mediatheque.entities.Realisateur;
+import com.gdn.mediatheque.entities.Type;
+import com.gdn.mediatheque.entities.Music;
+import com.gdn.mediatheque.entities.Artwork;
+import com.gdn.mediatheque.entities.Director;
 import com.gdn.mediatheque.entities.Serie;
 
 /**
@@ -32,57 +32,57 @@ import com.gdn.mediatheque.entities.Serie;
 public class IMediathequeImpl implements IMediathequeService {
 	
 	@Autowired
-	private OeuvreRepository oeuvreRepository;
+	private ArtworkRepository artworkRepository;
 	@Autowired
-	private RealisateurRepository realisateurRepository;
+	private DirectorRepository directorRepository;
 	@Autowired
-	private ActeurRepository acteurRepository;
+	private ActorRepository actorRepository;
 	@Autowired 
-	private ArtisteRepository artisteRepository;
+	private ArtistRepository artistRepository;
 
 	@Override
-	public List<Oeuvre> getOeuvres() {
-		return oeuvreRepository.findAll();
+	public List<Artwork> getArtworks() {
+		return artworkRepository.findAll();
 	}
 
 	@Override
 	public List<Film> getFilms() {
-		return oeuvreRepository.getFilms();
+		return artworkRepository.getFilms();
 	}
 
 	@Override
 	public List<Serie> getSeries() {
-		return oeuvreRepository.getSeries();
+		return artworkRepository.getSeries();
 	}
 
 	@Override
-	public List<Musique> getMusiques() {
-		return oeuvreRepository.getMusiques();
+	public List<Music> getMusics() {
+		return artworkRepository.getMusics();
 	}
 
 	@Override
-	public Oeuvre getOeuvre(Long id) {
-		return oeuvreRepository.findOne(id);
+	public Artwork getArtwork(Long id) {
+		return artworkRepository.findOne(id);
 	}
 
 	@Override
-	public List<Oeuvre> findByTitre(String titre) {
-		return oeuvreRepository.findByTitre(titre);
+	public List<Artwork> findByTitle(String title) {
+		return artworkRepository.findByTitle(title);
 	}
 	
 	@Override
-	public List<Film> findFilmByAnnee(int annee){
-		return oeuvreRepository.findFilmByAnnee(annee);
+	public List<Film> findFilmByYear(int year){
+		return artworkRepository.findFilmByYear(year);
 	}
 	
 	@Override
-	public List<Serie> findSerieByAnnee(int annee){
-		return oeuvreRepository.findSerieByAnnee(annee);
+	public List<Serie> findSerieByYear(int year){
+		return artworkRepository.findSerieByYear(year);
 	}
 	
 	@Override
-	public List<Musique> findMusiqueByAnnee(int annee){
-		return oeuvreRepository.findMusiqueByAnnee(annee);
+	public List<Music> findMusicByYear(int year){
+		return artworkRepository.findMusicByYear(year);
 	}
 
 	/*@Override
@@ -101,58 +101,58 @@ public class IMediathequeImpl implements IMediathequeService {
 	} */
 
 	@Override
-	public List<Film> findFilmByRealisateur(String nom) {
-		return oeuvreRepository.findFilmByRealisateur(nom);
+	public List<Film> findFilmByDirector(String name) {
+		return artworkRepository.findFilmByDirector(name);
 	}
 
 	@Override
-	public List<Serie> findSerieByRealisateur(String nom) {
-		return oeuvreRepository.findSerieByRealisateur(nom);
+	public List<Serie> findSerieByDirector(String name) {
+		return artworkRepository.findSerieByRealisateur(name);
 	}
 
 	@Override
-	public List<Musique> findMusiqueByArtiste(String nom) {
-		return oeuvreRepository.findMusiqueByArtiste(nom);
+	public List<Music> findMusicByArtist(String name) {
+		return artworkRepository.findMusiqueByArtist(name);
 	}
 
 	@Override
-	public List<Film> findFilmByActeur(String nom) {
-		return oeuvreRepository.findFilmByActeur(nom);
+	public List<Film> findFilmByActor(String name) {
+		return artworkRepository.findFilmByActor(name);
 	}
 
 	@Override
-	public List<Serie> findSerieByActeur(String nom) {
-		return oeuvreRepository.findSerieByActeur(nom);
+	public List<Serie> findSerieByActor(String name) {
+		return artworkRepository.findSerieByActor(name);
 	}
 
 	@Override
-	public List<Realisateur> getRealisateurs() {
-		return realisateurRepository.findAll();
+	public List<Director> getDirectors() {
+		return directorRepository.findAll();
 	}
 
 	@Override
-	public Realisateur getRealisateur(Long id) {
-		return realisateurRepository.findOne(id);
+	public Director getDirector(Long id) {
+		return directorRepository.findOne(id);
 	}
 
 	@Override
-	public List<Artiste> getArtistes() {
-		return artisteRepository.findAll();
+	public List<Artist> getArtists() {
+		return artistRepository.findAll();
 	}
 
 	@Override
-	public Artiste getArtiste(Long id) {
-		return artisteRepository.findOne(id);
+	public Artist getArtist(Long id) {
+		return artistRepository.findOne(id);
 	}
 
 	@Override
-	public List<Acteur> getActeurs() {
-		return acteurRepository.findAll();
+	public List<Actor> getActors() {
+		return actorRepository.findAll();
 	}
 
 	@Override
-	public Acteur getActeur(Long id) {
-		return acteurRepository.findOne(id);
+	public Actor getActor(Long id) {
+		return actorRepository.findOne(id);
 	}
 
 }

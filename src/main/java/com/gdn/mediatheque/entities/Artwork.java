@@ -23,7 +23,7 @@ import javax.persistence.InheritanceType;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="CAT_OEUVRE", discriminatorType=DiscriminatorType.STRING, length=8)
-public abstract class Oeuvre implements Serializable{
+public abstract class Artwork implements Serializable{
 	/**
 	 * 
 	 */
@@ -32,29 +32,29 @@ public abstract class Oeuvre implements Serializable{
 	@Id
 	@GeneratedValue
 	protected Long id;
-	protected String titre;
-	protected int annee;
-	protected double duree;
+	protected String title;
+	protected int year;
+	protected double duration;
 	@Column(length=1500)
 	protected String description;
 	protected String image;
 	@Enumerated(EnumType.STRING)
-	protected Genre genre;
+	protected Type type;
 
 	
 	//Constructeur par défaut
-	public Oeuvre() {
+	public Artwork() {
 	}
 	
 	//Constructeur surchargé
-	public Oeuvre(String titre, int annee, double duree, String description, String image, Genre genre) {
+	public Artwork(String title, int year, double duration, String description, String image, Type type) {
 		super();
-		this.titre = titre;
-		this.annee = annee;
-		this.duree = duree;
+		this.title = title;
+		this.year = year;
+		this.duration = duration;
 		this.description = description;
 		this.image = image;
-		this.genre = genre;
+		this.type = type;
 
 	}
 
@@ -67,28 +67,28 @@ public abstract class Oeuvre implements Serializable{
 		this.id = id;
 	}
 
-	public String getTitre() {
-		return titre;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTitre(String titre) {
-		this.titre = titre;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public int getAnnee() {
-		return annee;
+	public int getYear() {
+		return year;
 	}
 
-	public void setAnnee(int annee) {
-		this.annee = annee;
+	public void setYear(int year) {
+		this.year = year;
 	}
 
-	public double getDuree() {
-		return duree;
+	public double getDuration() {
+		return duration;
 	}
 
-	public void setDuree(double duree) {
-		this.duree = duree;
+	public void setDuree(double duration) {
+		this.duration = duration;
 	}
 
 	public String getDescription() {
@@ -107,12 +107,12 @@ public abstract class Oeuvre implements Serializable{
 		this.image = image;
 	}
 
-	public Genre getGenre() {
-		return genre;
+	public Type getType() {
+		return type;
 	}
 
-	public void setGenre(Genre genre) {
-		this.genre = genre;
+	public void setGenre(Type type) {
+		this.type = type;
 	}
 	
 }

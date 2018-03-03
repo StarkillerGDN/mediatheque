@@ -25,23 +25,23 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @DiscriminatorValue("SERIE")
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Serie extends Oeuvre{
+public class Serie extends Artwork{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7573280338669068209L;
 	//Attributs
 	@ManyToOne
-	@JoinColumn(name="ID_REALISATEUR")
+	@JoinColumn(name="ID_DIRECTOR")
 	@JsonManagedReference
-	private Realisateur realisateur;
+	private Director director;
 	@ManyToMany
 	@JoinTable(
-			name="SERIE_ACTEURS",
+			name="SERIE_ACTORS",
 			joinColumns=@JoinColumn(name="ID_SERIE", referencedColumnName="ID"),
-			inverseJoinColumns=@JoinColumn(name="ID_ACTEUR", referencedColumnName="ID"))
+			inverseJoinColumns=@JoinColumn(name="ID_ACTOR", referencedColumnName="ID"))
 	//@JsonManagedReference
-	private List<Acteur> acteurs;
+	private List<Actor> actors;
 	
 	//Constructeur par défaut
 	public Serie() {
@@ -49,28 +49,28 @@ public class Serie extends Oeuvre{
 	}
 	
 	//Constructeur surchargé
-	public Serie(String titre, int annee, double duree, String description, String image, Genre genre,
-			 Realisateur realisateur, List<Acteur> acteurs) {
-		super(titre, annee, duree, description, image, genre);
-		this.realisateur = realisateur;
-		this.acteurs = acteurs;
+	public Serie(String title, int year, double duration, String description, String image, Type type,
+			 Director director, List<Actor> actors) {
+		super(title, year, duration, description, image, type);
+		this.director = director;
+		this.actors = actors;
 	}
 	
 	//Getter et setter
-	public Realisateur getRealisateur() {
-		return realisateur;
+	public Director getDirector() {
+		return director;
 	}
 
-	public void setRealisateur(Realisateur realisateur) {
-		this.realisateur = realisateur;
+	public void setDirector(Director director) {
+		this.director = director;
 	}
 
-	public List<Acteur> getActeur() {
-		return acteurs;
+	public List<Actor> getActors() {
+		return actors;
 	}
 
-	public void setActeur(List<Acteur> acteurs) {
-		this.acteurs = acteurs;
+	public void setActors(List<Actor> actors) {
+		this.actors = actors;
 	}	
 	
 }

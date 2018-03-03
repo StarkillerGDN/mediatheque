@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
  *
  */
 @Entity
-public class Realisateur implements Serializable{
+public class Director implements Serializable{
 	/**
 	 * 
 	 */
@@ -28,23 +28,23 @@ public class Realisateur implements Serializable{
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String nom;
-	private String prenom;
-	@OneToMany(mappedBy="realisateur")
+	private String name;
+	private String firstname;
+	@OneToMany(mappedBy="director")
 	@JsonBackReference
 	private List<Film>films;
-	@OneToMany(mappedBy="realisateur")
+	@OneToMany(mappedBy="director")
 	@JsonBackReference
 	private List<Serie>series;
 	
 	//Constructeur par défaut
-	public Realisateur() {
+	public Director() {
 	}
 	
 	//Constructeur surchargé
-	public Realisateur(String nom, String prenom, List<Film>films, List<Serie>series) {
-		this.nom = nom;
-		this.prenom = prenom;
+	public Director(String name, String firstname, List<Film>films, List<Serie>series) {
+		this.name = name;
+		this.firstname = firstname;
 		this.films = films;
 		this.series = series;
 	}
@@ -58,20 +58,20 @@ public class Realisateur implements Serializable{
 		this.id = id;
 	}
 
-	public String getNom() {
-		return nom;
+	public String getName() {
+		return name;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getPrenom() {
-		return prenom;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
 	public List<Film> getFilms() {

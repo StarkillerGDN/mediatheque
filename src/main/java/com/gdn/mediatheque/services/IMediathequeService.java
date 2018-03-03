@@ -5,13 +5,13 @@ package com.gdn.mediatheque.services;
 
 import java.util.List;
 
-import com.gdn.mediatheque.entities.Acteur;
-import com.gdn.mediatheque.entities.Artiste;
+import com.gdn.mediatheque.entities.Actor;
+import com.gdn.mediatheque.entities.Artist;
 import com.gdn.mediatheque.entities.Film;
-import com.gdn.mediatheque.entities.Genre;
-import com.gdn.mediatheque.entities.Musique;
-import com.gdn.mediatheque.entities.Oeuvre;
-import com.gdn.mediatheque.entities.Realisateur;
+import com.gdn.mediatheque.entities.Type;
+import com.gdn.mediatheque.entities.Music;
+import com.gdn.mediatheque.entities.Artwork;
+import com.gdn.mediatheque.entities.Director;
 import com.gdn.mediatheque.entities.Serie;
 
 /**
@@ -20,7 +20,7 @@ import com.gdn.mediatheque.entities.Serie;
  */
 public interface IMediathequeService {
 	//Lister toutes les oeuvres (films, series, musiques)
-	public List<Oeuvre> getOeuvres();
+	public List<Artwork> getArtworks();
 	
 	//Lister les films
 	public List<Film> getFilms();
@@ -29,39 +29,39 @@ public interface IMediathequeService {
 	public List<Serie> getSeries();
 	
 	//Lister les musique
-	public List<Musique> getMusiques();
+	public List<Music> getMusics();
 	
 	//Trouver une oeuvre par son id
-	public Oeuvre getOeuvre(Long id);
+	public Artwork getArtwork(Long id);
 	
 	/***************Filtres***************/
 	
 	//Trouver des films par rapport à un réalisateur
-	public List<Film> findFilmByRealisateur(String nom);
+	public List<Film> findFilmByDirector(String name);
 	
 	//Trouver des serie par rapport à un réalisateur
-	public List<Serie> findSerieByRealisateur(String nom);
+	public List<Serie> findSerieByDirector(String name);
 	
 	//Trouver des oeuvres par rapport à un artiste
-	public List<Musique> findMusiqueByArtiste(String nom);
+	public List<Music> findMusicByArtist(String name);
 	
 	//Trouver des oeuvres par rapport à un acteur
-	public List<Film> findFilmByActeur(String nom);
+	public List<Film> findFilmByActor(String name);
 	
 	//Trouver des oeuvres par rapport à un acteur
-	public List<Serie> findSerieByActeur(String nom);
+	public List<Serie> findSerieByActor(String name);
 	
 	//Trouver des oeuvres par rapport à un titre
-	public List<Oeuvre> findByTitre(String titre);
+	public List<Artwork> findByTitle(String title);
 	
 	//Trouver des films par rapport à une année
-	public List<Film> findFilmByAnnee(int annee);
+	public List<Film> findFilmByYear(int year);
 	
 	//Trouver des series par rapport à une année
-	public List<Serie> findSerieByAnnee(int annee);
+	public List<Serie> findSerieByYear(int year);
 	
 	//Trouver des musique par rapport à une année
-	public List<Musique> findMusiqueByAnnee(int annee);
+	public List<Music> findMusicByYear(int year);
 	
 	//Trouver des films par rapport à un genre
 	//public List<Film> findFilmByGenre(String genre);
@@ -74,17 +74,17 @@ public interface IMediathequeService {
 	
 	/***************Realisateurs, Acteurs, Artiste***************/
 	
-	public List<Realisateur> getRealisateurs();
+	public List<Director> getDirectors();
 	
-	public Realisateur getRealisateur(Long id);
+	public Director getDirector(Long id);
 	
-	public List<Artiste> getArtistes();
+	public List<Artist> getArtists();
 	
-	public Artiste getArtiste(Long id);
+	public Artist getArtist(Long id);
 	
-	public List<Acteur> getActeurs();
+	public List<Actor> getActors();
 	
-	public Acteur getActeur(Long id);
+	public Actor getActor(Long id);
 	
 	/***************Fonctions non utilisables par l'utilisateur***************/
 	/*public Film saveFilm(Film f);
